@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hurdle</title>
+        <style>
+            :root {
+                --color-primary: #181c14;
+                --color-background: #e2f1e7;
+            }
+            body {
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    Oxygen,
+                    Ubuntu,
+                    Cantarell,
+                    "Open Sans",
+                    "Helvetica Neue",
+                    sans-serif;
+                color: var(--color-primary);
+                background-color: var(--color-background);
+                font-size: 1.2em;
+                margin: auto;
+                padding-inline: 1em;
+                max-width: 800px;
+            }
+            form {
+                display: flex;
+                gap: 1em;
+            }
+            input {
+                font-size: 2em;
+                padding: 0.5em;
+                width: 100%;
+                text-align: center;
+                font-weight: bold;
+                font-family: monospace;
+                border-radius: 0.1em;
+            }
+            button {
+                font-family: monospace;
+                font-size: 1.2em;
+                padding: 0.5em;
+                border-radius: 0.1em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>Hurdle</h1>
+        </header>
+        <main id="app-root">
+            <p>Guess a 5 letter word</p>
+            <form id="hurdle-form">
+                <input
+                    autofocus
+                    id="hurdle-input"
+                    name="hurdle-guess"
+                    minlength="5"
+                    maxlength="5"
+                    placeholder="HELLO"
+                    pattern="[A-Za-z]{5}"
+                    required
+                />
+                <button id="hurdle-submit" type="submit">Submit</button>
+            </form>
+            <h2>Guess history</h2>
+            <section id="history"></section>
+        </main>
+        <script type="module" src="/src/index.ts"></script>
+    </body>
+</html>
