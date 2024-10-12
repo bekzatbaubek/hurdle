@@ -19,6 +19,16 @@ func pickAnswer(candidates []string) string {
 	return candidates[index]
 }
 
+func invalidGuess(guess string) bool {
+	if len(guess) != 5 {
+		return true
+	}
+	if regexp.MustCompile(`[^A-Z]`).MatchString(guess) {
+		return true
+	}
+	return false
+}
+
 func hurdle(answer string, guess string) string {
 	occupiedPositions := make([]bool, len(answer))
 
@@ -67,7 +77,7 @@ func main() {
 	answer := pickAnswer(candidates)
 
 	fmt.Println("Wellcome to Hurdle")
-	fmt.Printf("You have %d rounds to guess the word\n", numberOfRounds)
+	fmt.Println(fmt.Sprintf("You have %d rounds to guess the word", numberOfRounds))
 	fmt.Println("Hints:")
 	fmt.Println("'0' - letter not in word")
 	fmt.Println("'1' - letter in word but in different position")
@@ -82,7 +92,7 @@ func main() {
 
 		// Validate guess
 		guess = strings.ToUpper(guess)
-		if len(guess) != len(answer) || regexp.MustCompile(`[^A-Z]`).MatchString(guess) {
+		if invalidGuess(guess) {
 			fmt.Println("Invalid guess format")
 			i--
 			continue
